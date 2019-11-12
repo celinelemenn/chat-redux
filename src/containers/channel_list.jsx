@@ -1,12 +1,15 @@
 import React from 'react';
-import channelsList from './../../data/channels';
+import { connect } from 'react-redux';
 
-const List = () => {
+const List = (props) => {
   return (
     <div className="channels-container">
       <span> Redux Chat</span>
       <ul>
-        { channelsList.map((channel) => {
+        { props.channels.map((channel) => {
+          if (props.selectedChannel === channel.name) {
+            return (<li className="active"> {channel.name}</li>);
+          }
           return (<li> {channel.name}</li>);
         })}
       </ul>
@@ -14,4 +17,13 @@ const List = () => {
   );
 };
 
-export default List;
+function mapStateToProps(state) {
+  // debugger;
+  return {
+    channels: state.channels,
+    selectedChannel: state.selectedChannel
+
+  };
+}
+
+export default connect(mapStateToProps)(List);
