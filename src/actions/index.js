@@ -9,9 +9,11 @@ export function setSelectedChannel(channelName) {
   };
 }
 
-// export function setChannels() {
-//   return {
-//     type: 'SET_CHANNELS',
-//     payload: channelsList
-//   };
-// }
+export function fetchMessages(channel) {
+  const url = `https://wagon-chat.herokuapp.com/${channel}/messages`;
+  const promise = fetch(url).then(response => response.json());
+  return {
+    type: 'FETCH_MESSAGES',
+    payload: promise
+  };
+}

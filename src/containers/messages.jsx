@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import Message from '../components/message';
-
+import { fetchMessages } from '../actions/index';
 
 const Messages = (props) => {
   return (
@@ -22,11 +23,15 @@ const Messages = (props) => {
 };
 
 function mapStateToProps(state) {
-   return {
+  return {
     messages: state.messages,
     selectedChannel: state.selectedChannel
 
   };
 }
 
-export default connect(mapStateToProps)(Messages);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchMessages }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Messages);
