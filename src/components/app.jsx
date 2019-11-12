@@ -1,9 +1,11 @@
 import React from 'react';
 
+import List from './../containers/channel_list';
+
 const App = () => {
   return (
     <div className="app">
-      <p>React + Redux starter</p>
+      <List />
     </div>
   );
 };

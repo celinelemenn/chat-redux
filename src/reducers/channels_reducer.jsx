@@ -1,6 +1,6 @@
-import channel from '../../data/channels';
+import channelsList from '../../data/channels';
 
-export default function(state = channel) {
+export default function(state = channelsList) {
   // switch (action.type) {
   //   case 'SET_CHANNEL':
   //     return action.payload;
