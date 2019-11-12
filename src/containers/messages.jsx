@@ -1,5 +1,6 @@
 import React from 'react';
 import channelsList from './../../data/channels';
+import Message from '../components/message';
 
 const channel = channelsList[0];
 
@@ -12,10 +13,7 @@ const Messages = () => {
       <div className="channel-content">
         { channel.conversations.map((conversation) => {
           return (
-            <div className="message-container">
-              <i><span>{conversation.username}</span></i>
-              <p>{conversation.description}</p>
-            </div>
+            <Message conversation={conversation} />
           );
         })}
       </div>
