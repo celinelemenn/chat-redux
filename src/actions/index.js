@@ -2,10 +2,10 @@
 
 // import channelsList from '../../data/channels';
 
-export function setSelectedChannel(channel) {
+export function setSelectedChannel(channelName) {
   return {
     type: 'SELECTED_CHANNEL',
-    payload: channel
+    payload: channelName
   };
 }
 

@@ -1,19 +1,19 @@
 import React from 'react';
-import channelsList from './../../data/channels';
+import { connect } from 'react-redux';
+
 import Message from '../components/message';
 
-const channel = channelsList[0];
 
-const Messages = () => {
+const Messages = (props) => {
   return (
     <div className="channel-container">
       <div className="channel-title ">
-        <span>{ channel.name}</span>
+        <span>{ props.selectedChannel}</span>
       </div>
       <div className="channel-content">
-        { channel.conversations.map((conversation) => {
+        { props.messages.map((message) => {
           return (
-            <Message conversation={conversation} />
+            <Message conversation={message} />
           );
         })}
       </div>
@@ -21,4 +21,12 @@ const Messages = () => {
   );
 };
 
-export default Messages;
+function mapStateToProps(state) {
+   return {
+    messages: state.messages,
+    selectedChannel: state.selectedChannel
+
+  };
+}
+
+export default connect(mapStateToProps)(Messages);

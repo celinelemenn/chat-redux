@@ -7,10 +7,10 @@ const List = (props) => {
       <span> Redux Chat</span>
       <ul>
         { props.channels.map((channel) => {
-          if (props.selectedChannel === channel.name) {
-            return (<li className="active"> {channel.name}</li>);
+          if (props.selectedChannel === channel) {
+            return (<li className="active"> {channel}</li>);
           }
-          return (<li> {channel.name}</li>);
+          return (<li> {channel}</li>);
         })}
       </ul>
     </div>
