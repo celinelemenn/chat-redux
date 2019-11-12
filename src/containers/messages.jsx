@@ -6,6 +6,10 @@ import Message from '../components/message';
 import { fetchMessages } from '../actions/index';
 
 const Messages = (props) => {
+  const newMessages = props.fetchMessages(props.selectedChannel);
+  console.log(newMessages);
+  console.log(props.messages);
+
   return (
     <div className="channel-container">
       <div className="channel-title ">

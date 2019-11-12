@@ -48,7 +48,7 @@ initialState.messages = [
 ];
 
 // Middlewares
-const middlewares = applyMiddleware(reduxPromise, logger);
+const middlewares = applyMiddleware(logger, reduxPromise);
 const store = createStore(reducers, initialState, middlewares);
 
 

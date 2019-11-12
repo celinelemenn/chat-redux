@@ -17,3 +17,13 @@ export function fetchMessages(channel) {
     payload: promise
   };
 }
+
+  // const url = `https://wagon-chat.herokuapp.com/general/messages`;
+  // fetch(url)
+  // .then(response => response.json())
+  // .then((data) => {
+  //   console.log(data)
+  // })
+
+
+// fetchMessages('general')
