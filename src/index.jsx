@@ -8,9 +8,14 @@ import { createStore, combineReducers } from 'redux';
 import App from './components/app';
 import '../assets/stylesheets/application.scss';
 
+
+import channelsReducer from './reducers/channels_reducer';
+import selectedChannelReducer from './reducers/selected_channel_reducer';
+
 // State and reducers
 const reducers = combineReducers({
-  changeMe: (state = null, action) => state
+  listChannel: channelsReducer,
+  selectedChannel: selectedChannelReducer
 });
 
 // render an instance of the component in the DOM
