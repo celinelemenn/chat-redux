@@ -6,32 +6,23 @@ import Message from '../components/message';
 import { fetchMessages } from '../actions/index';
 
 class Messages extends Component {
-  // const newMessages = props.fetchMessages(props.selectedChannel);
-  // console.log(newMessages);
-  // console.log(props.messages);
-// debugger
-
   componentWillMount() {
-    this.props.fetchMessages(this.props.selectedChannel)
+    this.props.fetchMessages(this.props.selectedChannel);
   }
 
-  render() {
-    if (this.props.messages.lenght === 0) {
-      return (
-        <div />
-      );
-    }
+  //   componentDidMount() {
+  //   this.refresher = setInterval(this.fetchMessages, 5000);
+  // }
 
+  render() {
     return (
       <div className="channel-container">
         <div className="channel-title ">
-          <span>{ this.props.selectedChannel}</span>
+          <span> Welcome to channel #{ this.props.selectedChannel}</span>
         </div>
         <div className="channel-content">
           { this.props.messages.map((message) => {
-            return (
-              <Message conversation={message} />
-            );
+            return <Message conversation={message} />;
           })}
         </div>
       </div>
@@ -40,7 +31,6 @@ class Messages extends Component {
 }
 
 function mapStateToProps(state) {
-
   return {
     messages: state.messages,
     selectedChannel: state.selectedChannel
