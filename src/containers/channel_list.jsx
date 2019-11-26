@@ -27,6 +27,7 @@ class List extends Component {
               <li
                 className={this.props.selectedChannel === channel ? 'active' : null}
                 onClick={() =>this.handleClick(channel)}
+                key={channel}
               >
               #{channel}
               </li>

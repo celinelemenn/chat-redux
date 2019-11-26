@@ -8,14 +8,21 @@ import { fetchMessages } from '../actions/index';
 
 class Messages extends Component {
   componentWillMount() {
-    this.props.fetchMessages(this.props.selectedChannel);
+    // this.props.fetchMessages(this.props.selectedChannel);
   }
 
-  //   componentDidMount() {
-  //   this.refresher = setInterval(this.fetchMessages, 5000);
-  // }
+  componentDidMount() {
+    // debugger
+    this.props.fetchMessages(this.props.selectedChannel);
+    // this.intervalID = setInterval(this.props.fetchMessages, 5000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.intervalID);
+  }
 
   render() {
+    // debugger
     return (
       <div className="channel-container">
         <div className="channel-title ">
@@ -23,7 +30,7 @@ class Messages extends Component {
         </div>
         <div className="channel-content">
           { this.props.messages.map((message) => {
-            return <Message conversation={message} />;
+            return <Message conversation={message} key={message.id} />;
           })}
         </div>
         <MessageForm />

@@ -13,17 +13,17 @@ class MessageForm extends Component {
     };
   }
 
-  handleSubmit = () => {
+  handleSubmit = (event) => {
     event.preventDefault();
     const channel = this.props.selectedChannel;
     const author = 'Bob';
     const content = this.state.value;
     this.props.createMessage(channel, author, content);
     this.props.fetchMessages(channel);
-    // this.reset();
+    this.resetState();
   }
 
-  reset = () => {
+  resetState = () => {
     this.setState({
       value: ""
     });
