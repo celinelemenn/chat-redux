@@ -24,6 +24,7 @@ const identityReducer = (state = null) => state;
 
 const reducers = combineReducers({
   channels: identityReducer,
+  currentUser: identityReducer,
   selectedChannel: selectedChannelReducer,
   messages: messagesReducer
 });
@@ -31,7 +32,7 @@ const reducers = combineReducers({
 const initialState = {
   messages: [],
   channels: ['general', 'react', 'paris'],
-  // currentUser: prompt("What is your username?") || `anonymous${Math.floor(10 + (Math.random() * 90))}`,
+  currentUser: prompt("What is your username?") || `anonymous${Math.floor(10 + (Math.random() * 90))}`,
   // currentUser: 'CELINE',
   selectedChannel: 'general'
 };
