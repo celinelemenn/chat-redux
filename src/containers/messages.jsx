@@ -28,7 +28,7 @@ class Messages extends Component {
         <div className="channel-title ">
           <span> Welcome to channel #{ this.props.selectedChannel}</span>
         </div>
-        <div className="channel-content">
+        <div className="channel-content" >
           { this.props.messages.map((message) => {
             return <Message conversation={message} key={message.id} />;
           })}
