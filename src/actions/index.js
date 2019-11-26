@@ -32,6 +32,6 @@ export function createMessage(channel, author, content) {
   return {
     type: 'CREATE_MESSAGE',
     payload: promise
-  }
+  };
 }
 

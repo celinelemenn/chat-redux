@@ -12,7 +12,6 @@ class List extends Component {
 
 
   handleClick(channel) {
-    // debugger;
     this.props.setSelectedChannel(channel);
   }
 
