@@ -9,7 +9,6 @@ import reduxPromise from 'redux-promise';
 // internal modules
 import App from './components/app';
 import '../assets/stylesheets/application.scss';
-import channelsList from '../data/channels';
 
 
 import channelsReducer from './reducers/channels_reducer';
@@ -28,27 +27,27 @@ const reducers = combineReducers({
 
 const initialState = {
   messages: [],
-  channels: channelsList,
+  channels: ['general', 'react', 'paris'],
   // currentUser: prompt("What is your username?") || `anonymous${Math.floor(10 + (Math.random() * 90))}`,
   // currentUser: 'CELINE',
   selectedChannel: 'general'
 };
 
-initialState.messages = [
-  {
-    author: "anonymous92",
-    content: "Hello world!",
-    created_at: "2017-09-26T23:03:16.365Z"
-  },
-  {
-    author: "anonymous77",
-    content: "My name is anonymous77",
-    created_at: "2017-09-26T23:03:21.194Z"
-  }
-];
+// initialState.messages = [
+//   {
+//     author: "anonymous92",
+//     content: "Hello world!",
+//     created_at: "2017-09-26T23:03:16.365Z"
+//   },
+//   {
+//     author: "anonymous77",
+//     content: "My name is anonymous77",
+//     created_at: "2017-09-26T23:03:21.194Z"
+//   }
+// ];
 
 // Middlewares
-const middlewares = applyMiddleware(logger, reduxPromise);
+const middlewares = applyMiddleware(reduxPromise, logger);
 const store = createStore(reducers, initialState, middlewares);
 
 

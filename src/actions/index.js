@@ -1,6 +1,5 @@
 // TODO: add and export your own actions
 
-// import channelsList from '../../data/channels';
 
 export function setSelectedChannel(channelName) {
   return {
@@ -14,9 +13,10 @@ export function fetchMessages(channel) {
   const promise = fetch(url).then(response => response.json());
   return {
     type: 'FETCH_MESSAGES',
-    payload: promise
+    payload: promise.messages
   };
 }
+
 
   // const url = `https://wagon-chat.herokuapp.com/general/messages`;
   // fetch(url)

@@ -1,21 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { setSelectedChannel } from '../actions/index';
 
-const List = (props) => {
-  return (
-    <div className="channels-container">
-      <span> Redux Chat</span>
-      <ul>
-        { props.channels.map((channel) => {
-          if (props.selectedChannel === channel) {
-            return (<li className="active"> {channel}</li>);
-          }
-          return (<li> {channel}</li>);
-        })}
-      </ul>
-    </div>
-  );
-};
+class List extends Component {
+  handleClick = (e) => {
+    // debugger;
+    const channel = e.target.innerText;
+    this.props.setSelectedChannel(channel);
+  }
+
+  componentDidMount() {
+
+  }
+
+  render() {
+    return (
+      <div className="channels-container">
+        <span> Redux Chat</span>
+        <ul>
+          { this.props.channels.channelsList.map((channel) => {
+            if (this.props.selectedChannel === channel) {
+              return (<li className="active" ><a onClick={this.handleClick}> {channel}</a></li>);
+            }
+            return (<li> <a onClick={this.handleClick}> {channel}</a></li>);
+          })}
+        </ul>
+      </div>
+    );
+  }
+}
 
 function mapStateToProps(state) {
   // debugger;
@@ -26,4 +40,8 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(List);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ setSelectedChannel }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(List);
