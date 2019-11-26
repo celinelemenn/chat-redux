@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+// internal components
+import { createMessage, fetchMessages } from './../actions/index';
 
 class MessageForm extends Component {
   constructor(props) {
@@ -8,16 +13,25 @@ class MessageForm extends Component {
     };
   }
 
-  handleSubmit = (event) => {
-    alert('A name was submitted: ' + this.state.value);
+  handleSubmit = () => {
     event.preventDefault();
+    const channel = this.props.selectedChannel;
+    const author = 'Bob';
+    const content = this.state.value;
+    this.props.createMessage(channel, author, content);
+    this.props.fetchMessages(channel);
+    // this.reset();
   }
 
+  reset = () => {
+    this.setState({
+      value: ""
+    });
+  }
   handleChange = (e) => {
     this.setState({
       value: e.target.value
     });
-    console.log(e.target.value);
   }
 
   render() {
@@ -36,4 +50,14 @@ class MessageForm extends Component {
   }
 }
 
-export default MessageForm;
+function mapStateToProp(state) {
+  return {
+    selectedChannel: state.selectedChannel
+  };
+}
+
+function mapDispatchToProp(dispatch) {
+  return bindActionCreators({ createMessage, fetchMessages }, dispatch);
+}
+
+export default connect(mapStateToProp, mapDispatchToProp)(MessageForm);
