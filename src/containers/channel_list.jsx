@@ -11,9 +11,9 @@ class List extends Component {
   }
 
 
-  handleClick = () => {
+  handleClick(channel) {
     // debugger;
-    // this.props.setSelectedChannel(channel);
+    this.props.setSelectedChannel(channel);
   }
 
 
@@ -26,7 +26,7 @@ class List extends Component {
             return (
               <li
                 className={this.props.selectedChannel === channel ? 'active' : null}
-                onClick={this.handleClick()}
+                onClick={() =>this.handleClick(channel)}
               >
               #{channel}
               </li>

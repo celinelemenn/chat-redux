@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import Message from '../components/message';
+import MessageForm from '../components/MessageForm';
 import { fetchMessages } from '../actions/index';
 
 class Messages extends Component {
@@ -25,6 +26,7 @@ class Messages extends Component {
             return <Message conversation={message} />;
           })}
         </div>
+        <MessageForm />
       </div>
     );
   }
